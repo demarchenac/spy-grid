@@ -67,8 +67,8 @@ export interface RandomUserAPIResponse {
 }
 
 export interface RandomUser {
-  firstname: string;
-  lastname: string;
+  firstName: string;
+  lastName: string;
   username: string;
   city: string;
   state: string;
@@ -80,5 +80,5 @@ export interface RandomUser {
     offset: string;
     description: string;
   };
-  largephoto: string;
+  largePhoto: string;
 }

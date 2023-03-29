@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { APIRandomUser, RandomUser, RandomUserAPIResponse } from "./types";
 
 const API_URL = "https://randomuser.me/api";
 
 function mapAPIPayloadToRandomUser(payload: APIRandomUser): RandomUser {
   return {
-    firstname: payload.name.first,
-    lastname: payload.name.last,
+    firstName: payload.name.first,
+    lastName: payload.name.last,
     username: payload.login.username,
     city: payload.location.city,
     state: payload.location.state,
@@ -18,7 +18,7 @@ function mapAPIPayloadToRandomUser(payload: APIRandomUser): RandomUser {
       offset: payload.location.timezone.offset,
       description: payload.location.timezone.description,
     },
-    largephoto: payload.picture.large,
+    largePhoto: payload.picture.large,
   };
 }
 
@@ -27,14 +27,12 @@ export function useRandomUser() {
   const [error, setError] = useState<string | null>(null);
   const [data, setData] = useState<RandomUser | null>(null);
 
-  const reset = () => {
+  const refetch = useCallback(async () => {
+    // reset state
     toggleLoading(true);
     setError(null);
     setData(null);
-  };
 
-  const refetch = async () => {
-    reset();
     try {
       const response = await fetch(API_URL, {
         headers: { "Content-Type": "application/json" },
@@ -50,7 +48,7 @@ export function useRandomUser() {
     } finally {
       toggleLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     refetch();
