@@ -27,7 +27,7 @@ function SpyDetail({
   },
 }: SpyDetailProps) {
   return (
-    <article className="max-w-lg min-w-sm p-6 my-4 border rounded-lg shadow bg-gray-800 border-gray-700 flex flex-col gap-4">
+    <article className="max-w-lg min-w-sm py-6 m-4 px-4 border rounded-lg shadow bg-gray-800 border-gray-700 flex flex-col gap-2">
       <div className="w-full flex flex-col gap-2">
         <img
           src={largePhoto}
