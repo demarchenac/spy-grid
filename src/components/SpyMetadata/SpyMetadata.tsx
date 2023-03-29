@@ -8,7 +8,7 @@ export function SpyMetadata({ title, value, type = "text" }: SpyMetadataProps) {
   const capitalized = title.charAt(0).toUpperCase() + title.substring(1);
 
   return (
-    <p className="flex gap-2 pl-2 align-center">
+    <div className="flex gap-2 pl-2 align-center">
       <span>
         <b>{capitalized}:</b>
       </span>
@@ -20,6 +20,6 @@ export function SpyMetadata({ title, value, type = "text" }: SpyMetadataProps) {
           title={`${value.split("-")[1]}`}
         />
       )}
-    </p>
+    </div>
   );
 }
