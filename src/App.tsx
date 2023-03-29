@@ -1,6 +1,10 @@
+import { useRandomUser } from "./hooks/useRandomUser.tsx";
+
 function App() {
+  const { data } = useRandomUser();
+  console.log({ data });
   return (
-    <div>
+    <div className="h-screen bg-slate-900 flex flex-col justify-center items-center">
       <h1 className="text-3xl font-bold underline">App Page!</h1>
       <div>
         <p>
