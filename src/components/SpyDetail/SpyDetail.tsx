@@ -2,9 +2,12 @@ import React from "react";
 import { RandomUser } from "../../hooks/useRandomUser/types";
 import { SpyMetadataGroup, SpyMetadata } from "../SpyMetadata";
 
+type emptyFn = () => void;
+type emptyPromise = () => Promise<void>;
+
 interface SpyDetailProps {
   spy: RandomUser;
-  refetch: () => void;
+  refetch: emptyFn | emptyPromise;
 }
 
 function SpyDetail({
@@ -29,6 +32,7 @@ function SpyDetail({
         <img
           src={largePhoto}
           alt={`${codename}'s photo`}
+          title={`${codename}'s photo`}
           className="w-96.5 self-center rounded-md"
         />
         <h2 className="font-bold text-2xl font-fira-mono">@{codename}</h2>

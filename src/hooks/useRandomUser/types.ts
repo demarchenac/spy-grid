@@ -63,7 +63,8 @@ interface APIInfo {
 }
 
 export interface RandomUserAPIResponse {
-  results: [APIRandomUser, APIInfo];
+  results: APIRandomUser[];
+  info: APIInfo;
 }
 
 export interface RandomUser {

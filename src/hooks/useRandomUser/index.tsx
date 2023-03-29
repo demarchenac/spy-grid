@@ -29,7 +29,7 @@ function mapAPIPayloadToRandomUser(payload: APIRandomUser): RandomUser {
     city: payload.location.city,
     state: payload.location.state,
     country: payload.location.country,
-    gender: payload.location.country,
+    gender: payload.gender,
     dob: new Date(payload.dob.date),
     eyeColor: colors[color],
     timezone: {
