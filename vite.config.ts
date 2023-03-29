@@ -10,6 +10,14 @@ export default defineConfig({
   plugins: [
     react(),
     unfonts({
+      google: {
+        families: [
+          {
+            name: "Fira Mono",
+            styles: "wght@400;500;700",
+          },
+        ],
+      },
       custom: {
         display: "swap",
         families: {

@@ -3,7 +3,7 @@ import { SpyDetail } from "./components/SpyDetail";
 import { useRandomUser } from "./hooks/useRandomUser";
 
 function App() {
-  const { data, isLoading, error } = useRandomUser();
+  const { data, isLoading, error, refetch } = useRandomUser();
   return (
     <main className="h-screen bg-slate-900 flex flex-col justify-center items-center">
       <h1 className="text-3xl font-skyfall-done">Spy Grid 007</h1>
@@ -12,7 +12,12 @@ function App() {
           <Spinner />
         </div>
       )}
-      {data && <SpyDetail spy={data} />}
+      {error && (
+        <span className="text-red-500 text-2xl font-fira-mono p-6">
+          {error}
+        </span>
+      )}
+      {data && <SpyDetail spy={data} refetch={refetch} />}
     </main>
   );
 }

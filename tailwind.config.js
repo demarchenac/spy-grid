@@ -8,6 +8,7 @@ export default {
       },
       fontFamily: {
         "skyfall-done": ["SkyFall Done"],
+        "fira-mono": ["Fira Mono"],
       },
     },
   },
