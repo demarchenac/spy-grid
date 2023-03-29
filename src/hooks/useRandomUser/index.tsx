@@ -40,10 +40,13 @@ function mapAPIPayloadToRandomUser(payload: APIRandomUser): RandomUser {
   };
 }
 
-export function useRandomUser() {
+export function useRandomUser(
+  { seeds = null }: { seeds?: string[] | null } = { seeds: null }
+) {
   const [isLoading, toggleLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [data, setData] = useState<RandomUser | null>(null);
+  const [seedIndex, setSeedIndex] = useState<number>(0);
 
   const refetch = useCallback(async () => {
     // reset state
@@ -51,22 +54,38 @@ export function useRandomUser() {
     setError(null);
     setData(null);
 
+    let apiURL = API_URL;
+
+    if (seeds && seeds.length > 0) {
+      apiURL = `${apiURL}?seed=${seeds[seedIndex]}`;
+    }
+
     try {
-      const response = await fetch(API_URL, {
+      const response = await fetch(apiURL, {
         headers: { "Content-Type": "application/json" },
       });
+
       const json = (await response.json()) as RandomUserAPIResponse;
 
       const randomUser = mapAPIPayloadToRandomUser(json.results[0]);
       setData(randomUser);
+
+      // loop through seeds!
+      if (seeds) {
+        setSeedIndex((previous) => {
+          const newValue = previous + 1;
+          return newValue >= seeds.length ? 0 : newValue;
+        });
+      }
     } catch (error: any) {
+      console.error(error);
       if ("message" in error) {
         setError(error.message);
       }
     } finally {
       toggleLoading(false);
     }
-  }, []);
+  }, [seedIndex]);
 
   useEffect(() => {
     refetch();
