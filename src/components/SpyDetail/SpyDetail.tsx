@@ -1,6 +1,6 @@
 import React from "react";
 import { RandomUser } from "../../hooks/useRandomUser/types";
-import { SpyMetadata } from "../SpyMetadata";
+import { SpyMetadataGroup, SpyMetadata } from "../SpyMetadata";
 
 interface SpyDetailProps {
   spy: RandomUser;
@@ -34,30 +34,31 @@ function SpyDetail({
         <h2 className="font-bold text-2xl font-fira-mono">@{codename}</h2>
       </div>
 
-      <div className="w-full flex flex-col gap-1">
+      <SpyMetadataGroup>
         <SpyMetadata title="first name" value={firstName} />
         <SpyMetadata title="last name" value={lastName} />
-      </div>
+      </SpyMetadataGroup>
 
-      <div className="w-full flex flex-col gap-1">
+      <SpyMetadataGroup>
         <SpyMetadata title="gender" value={gender} />
         <SpyMetadata title="date of birth" value={dob.toLocaleDateString()} />
         <SpyMetadata title="eye color" value={eyeColor} />
-      </div>
+      </SpyMetadataGroup>
 
-      <div className="w-full flex flex-col gap-1">
+      <SpyMetadataGroup>
         <SpyMetadata title="city" value={city} />
         <SpyMetadata title="state" value={state} />
         <SpyMetadata title="country" value={country} />
-      </div>
+      </SpyMetadataGroup>
 
-      <div className="w-full flex flex-col gap-1">
+      <SpyMetadataGroup>
         <SpyMetadata title="timezone offset" value={timezone.offset} />
         <SpyMetadata
           title="timezone description"
           value={timezone.description}
         />
-      </div>
+      </SpyMetadataGroup>
+
       <button
         onClick={refetch}
         className="px-6 py-2 bg-slate-700 hover:bg-slate-900 transition-all ease-in rounded-lg  focus:ring-slate-800 focus:ring-2"
