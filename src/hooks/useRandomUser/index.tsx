@@ -4,6 +4,24 @@ import { APIRandomUser, RandomUser, RandomUserAPIResponse } from "./types";
 const API_URL = "https://randomuser.me/api";
 
 function mapAPIPayloadToRandomUser(payload: APIRandomUser): RandomUser {
+  const colors = [
+    "bg-red-600",
+    "bg-amber-600",
+    "bg-yellow-400",
+    "bg-lime-500",
+    "bg-emerald-600",
+    "bg-cyan-400",
+    "bg-blue-700",
+    "bg-indigo-600",
+    "bg-violet-900",
+    "bg-purple-800",
+    "bg-fuchsia-500",
+    "bg-pink-400",
+    "bg-rose-700",
+  ];
+
+  const color = Math.max(Math.round(Math.random() * colors.length) - 1, 0);
+
   return {
     firstName: payload.name.first,
     lastName: payload.name.last,
@@ -13,7 +31,7 @@ function mapAPIPayloadToRandomUser(payload: APIRandomUser): RandomUser {
     country: payload.location.country,
     gender: payload.location.country,
     dob: new Date(payload.dob.date),
-    eyeColor: "I create this one",
+    eyeColor: colors[color],
     timezone: {
       offset: payload.location.timezone.offset,
       description: payload.location.timezone.description,

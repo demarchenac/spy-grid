@@ -42,7 +42,7 @@ function SpyDetail({
       <SpyMetadataGroup>
         <SpyMetadata title="gender" value={gender} />
         <SpyMetadata title="date of birth" value={dob.toLocaleDateString()} />
-        <SpyMetadata title="eye color" value={eyeColor} />
+        <SpyMetadata title="eye color" value={eyeColor} type="color" />
       </SpyMetadataGroup>
 
       <SpyMetadataGroup>
