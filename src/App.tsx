@@ -5,12 +5,7 @@ function App() {
   console.log({ data });
   return (
     <div className="h-screen bg-slate-900 flex flex-col justify-center items-center">
-      <h1 className="text-3xl font-bold underline">App Page!</h1>
-      <div>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
+      <h1 className="text-3xl font-skyfall-done">Spy Grid 007</h1>
     </div>
   );
 }
