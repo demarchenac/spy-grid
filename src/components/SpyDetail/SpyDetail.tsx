@@ -83,7 +83,7 @@ function SpyDetail({
           <div className="w-1/2">
             <button
               onClick={onPreviousSpy}
-              className="w-full px-6 py-2 bg-slate-700 hover:bg-slate-900 transition-all ease-in rounded-lg  focus:ring-slate-800 focus:ring-2"
+              className="w-full px-3 py-1 text-sm md:px-6 md:py-2 md:text-base bg-slate-700 hover:bg-slate-900 transition-all ease-in rounded-lg  focus:ring-slate-800 focus:ring-2"
             >
               Previous asset
             </button>
@@ -92,7 +92,7 @@ function SpyDetail({
         <div className={seed ? "w-1/2" : "w-full"}>
           <button
             onClick={handleNextAssetClick}
-            className="w-full px-6 py-2 bg-slate-700 hover:bg-slate-900 transition-all ease-in rounded-lg  focus:ring-slate-800 focus:ring-2"
+            className="w-full px-3 py-1 text-sm md:px-6 md:py-2 md:text-base bg-slate-700 hover:bg-slate-900 transition-all ease-in rounded-lg  focus:ring-slate-800 focus:ring-2"
           >
             Next asset
           </button>
@@ -102,7 +102,7 @@ function SpyDetail({
       {seed && (
         <button
           onClick={onGoBack}
-          className="px-6 py-2 bg-amber-900 hover:bg-amber-600 transition-all ease-in rounded-lg  focus:ring-slate-800 focus:ring-2"
+          className="px-3 py-1 text-sm md:px-6 md:py-2 md:text-base bg-amber-900 hover:bg-amber-600 transition-all ease-in rounded-lg  focus:ring-slate-800 focus:ring-2"
         >
           Go back
         </button>

@@ -72,8 +72,8 @@ function App({ seeds = null }: AppProps = { seeds: null }) {
   };
 
   return (
-    <main className="h-screen bg-slate-900 flex flex-col justify-center items-center">
-      <h1 className="text-3xl font-skyfall-done">Spy Grid 007</h1>
+    <main className="min-h-screen bg-slate-900 flex flex-col justify-center items-center">
+      <h1 className="text-3xl font-skyfall-done pb-2 pt-4">Spy Grid 007</h1>
       {dataIsLoading && (
         <div className="py-4">
           <Spinner />
