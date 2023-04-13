@@ -13,5 +13,9 @@ export function SpyInfo({ spy: { username, seed }, onSelect }: SpyInfoProps) {
     }
     onSelect(seed);
   };
-  return <li onClick={handleClick}>{username}</li>;
+  return (
+    <li className="cursor-pointer" onClick={handleClick}>
+      {username}
+    </li>
+  );
 }
