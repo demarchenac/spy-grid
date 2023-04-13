@@ -8,16 +8,16 @@ type emptyPromise = () => Promise<void>;
 interface SpyDetailProps {
   spy: RandomUser;
   refetch: emptyFn | emptyPromise;
-  onNextSpy: emptyFn;
-  onPreviousSpy: emptyFn;
-  onGoBack: emptyFn;
+  onNextSpy?: emptyFn;
+  onPreviousSpy?: emptyFn;
+  onGoBack?: emptyFn;
 }
 
 function SpyDetail({
   refetch,
-  onNextSpy,
-  onPreviousSpy,
-  onGoBack,
+  onNextSpy = () => {},
+  onPreviousSpy = () => {},
+  onGoBack = () => {},
   spy: {
     city,
     country,
@@ -89,7 +89,7 @@ function SpyDetail({
             </button>
           </div>
         )}
-        <div className="w-1/2">
+        <div className={seed ? "w-1/2" : "w-full"}>
           <button
             onClick={handleNextAssetClick}
             className="w-full px-6 py-2 bg-slate-700 hover:bg-slate-900 transition-all ease-in rounded-lg  focus:ring-slate-800 focus:ring-2"

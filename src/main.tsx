@@ -7,6 +7,6 @@ import "unfonts.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <App seeds={seeds} />
+    <App />
   </React.StrictMode>
 );

@@ -1,9 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Spinner } from "./components/Spinner";
 import { SpyDetail } from "./components/SpyDetail";
-import { SpyInfo } from "./components/SpyInfo";
 import { SpyInfoList } from "./components/SpyInfoList";
-import { useRandomUser } from "./hooks/useRandomUser";
 import { useRandomUsers } from "./hooks/useRandomUsers";
 
 interface AppProps {
@@ -34,8 +32,41 @@ function App({ seeds = null }: AppProps = { seeds: null }) {
     toggleShowDetail(false);
   };
 
-  const dataIsLoading = isDetailShown ? currentSpy.isLoading : isLoading;
-  const dataError = isDetailShown ? currentSpy.error : error;
+  // properly update error and loading ui.
+  let dataIsLoading = isDetailShown ? currentSpy.isLoading : isLoading;
+  let dataError = isDetailShown ? currentSpy.error : error;
+  if (!seeds) {
+    dataIsLoading = currentSpy.isLoading;
+    dataError = currentSpy.error;
+  }
+
+  const renderWithSeeds = () => {
+    if (isDetailShown && currentSpy.data) {
+      return (
+        <SpyDetail
+          spy={currentSpy.data}
+          refetch={currentSpy.refetch}
+          onNextSpy={goForward}
+          onPreviousSpy={goBackwards}
+          onGoBack={handleSpyDeselection}
+        />
+      );
+    }
+
+    if (!isDetailShown && data) {
+      return <SpyInfoList spies={data} onSelectSpy={handleSpySelection} />;
+    }
+
+    return <></>;
+  };
+
+  const renderWithoutSeeds = () => {
+    if (!currentSpy.data) {
+      return <></>;
+    }
+
+    return <SpyDetail spy={currentSpy.data} refetch={currentSpy.refetch} />;
+  };
 
   return (
     <main className="h-screen bg-slate-900 flex flex-col justify-center items-center">
@@ -47,24 +78,14 @@ function App({ seeds = null }: AppProps = { seeds: null }) {
       )}
       {dataError && (
         <span className="text-red-500 text-2xl font-fira-mono p-6">
-          {error}
+          {dataError}
         </span>
       )}
-      {isDetailShown
-        ? currentSpy.data && (
-            <SpyDetail
-              spy={currentSpy.data}
-              refetch={currentSpy.refetch}
-              onNextSpy={goForward}
-              onPreviousSpy={goBackwards}
-              onGoBack={handleSpyDeselection}
-            />
-          )
-        : data && <SpyInfoList spies={data} onSelectSpy={handleSpySelection} />}
+      {seeds ? renderWithSeeds() : renderWithoutSeeds()}
     </main>
   );
 }
 
 export default App;
 
-// TOOD: share w/ md.islam@pnmac.com
+// TODO: share w/ md.islam@pnmac.com ✅
