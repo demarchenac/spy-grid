@@ -14,7 +14,10 @@ export function SpyInfo({ spy: { username, seed }, onSelect }: SpyInfoProps) {
     onSelect(seed);
   };
   return (
-    <li className="cursor-pointer" onClick={handleClick}>
+    <li
+      className="cursor-pointer hover:bg-slate-600 p-2 rounded-md transition-all ease-in"
+      onClick={handleClick}
+    >
       {username}
     </li>
   );

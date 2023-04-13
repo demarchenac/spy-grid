@@ -8,7 +8,7 @@ interface SpyInfoListProps {
 
 export function SpyInfoList({ spies, onSelectSpy }: SpyInfoListProps) {
   return (
-    <ul>
+    <ul className="border border-gray-100 p-5 flex flex-col gap-4 mt-6 rounded-md">
       {spies?.map((spy) => (
         <SpyInfo key={spy.username} spy={spy} onSelect={onSelectSpy} />
       ))}
