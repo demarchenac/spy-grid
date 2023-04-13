@@ -44,7 +44,6 @@ export function useRandomUsers(
       setSeedIndex(0);
       return;
     }
-
     let spySeedIndex = seeds?.indexOf(spySeed) ?? 0;
     if (spySeedIndex < 0) {
       spySeedIndex = 0;
@@ -69,6 +68,9 @@ export function useRandomUsers(
       setData([]);
 
       for (const seed of seeds) {
+        // I needed to change this because in the end with the Promise.all()
+        // approach I was getting rate-limited, so I opted to add a little bit
+        // of a delay between each request.
         if (seeds.indexOf(seed) > 0) {
           await waitFor(100);
         }
