@@ -21,7 +21,6 @@ function App({ seeds = null }: AppProps = { seeds: null }) {
   } = useRandomUsers({ seeds });
 
   const handleSpySelection = (seed: string) => {
-    currentSpy.reset();
     setCurrentSpy(seed);
     toggleShowDetail(true);
   };
@@ -41,6 +40,10 @@ function App({ seeds = null }: AppProps = { seeds: null }) {
   }
 
   const renderWithSeeds = () => {
+    if (dataIsLoading) {
+      return <></>;
+    }
+
     if (isDetailShown && currentSpy.data) {
       return (
         <SpyDetail
@@ -61,7 +64,7 @@ function App({ seeds = null }: AppProps = { seeds: null }) {
   };
 
   const renderWithoutSeeds = () => {
-    if (!currentSpy.data) {
+    if (!currentSpy.data || currentSpy.isLoading) {
       return <></>;
     }
 
