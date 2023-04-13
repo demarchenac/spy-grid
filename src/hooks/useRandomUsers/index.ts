@@ -1,0 +1,1 @@
+export { useRandomUsers } from "./useRandomUsers";

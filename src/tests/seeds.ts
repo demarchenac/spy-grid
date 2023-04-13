@@ -1,4 +1,4 @@
-import { RandomUser } from "../hooks/useRandomUser/types";
+import { RandomUser } from "../types/randomUser";
 
 export const seeds = [
   "a3ace2a56a544a4c",

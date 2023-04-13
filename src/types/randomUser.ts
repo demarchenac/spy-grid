@@ -82,4 +82,5 @@ export interface RandomUser {
     description: string;
   };
   largePhoto: string;
+  seed?: string;
 }
